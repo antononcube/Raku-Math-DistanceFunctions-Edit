@@ -5,7 +5,10 @@ use NativeHelpers::Array;
 
 my constant $library = %?RESOURCES<libraries/EditDistance>.IO.Str;
 
-sub say_hello() is native($library) { * }
+# sub say-hello() is native($library) { * }
+# our sub greet() {
+#    say-hello();
+# }
 
 sub EditDistance(Str, Str --> int32) is native($library) { * }
 
@@ -13,9 +16,6 @@ sub EditDistanceArray(CArray[int32], int32, CArray[int32], int32 --> int32) is n
 
 unit module Math::DistanceFunctions::Edit;
 
-our sub greet() {
-    say_hello();
-}
 
 sub has-utf8(Str:D $s) { $s.chars != $s.encode.bytes }
 
