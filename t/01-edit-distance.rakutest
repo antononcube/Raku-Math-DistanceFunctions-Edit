@@ -1,0 +1,37 @@
+use v6.d;
+
+# (Very) modified version of:
+# https://github.com/ugexe/Raku-Text--Levenshtein--Damerau/blob/main/t/dld.rakutest
+
+use lib <. lib>;
+use Math::DistanceFunctions::Edit;
+
+use Test;
+plan *;
+
+is edit-distance('four','four'),                     0,  'matching';
+is edit-distance('four','for'),                      1,  'insertion';
+is edit-distance('four','fourth'),                   2,  'deletion';
+is edit-distance('four','fuor'),                     1,  'transposition';
+is edit-distance('four','fxxr'),                     2,  'substitution';
+is edit-distance('four','FOuR'),                     3,  'case';
+is edit-distance('four',''),                         4,  'target empty';
+is edit-distance('','four'),                         4,  'source empty';
+is edit-distance('',''),                             0,  'source & target empty';
+is edit-distance('11','1'),                          1,  'numbers';
+is edit-distance('xxx','x'),                         2,  'xxx vs x';
+
+# some extra maxDistance tests
+is edit-distance("xxx","xxxx"),                      1,  'xxx vs xxxx';
+is edit-distance("a","xxxxxxxx"),                    8,  'misc 9 (length shortcut)';
+
+# Test some utf8
+# Maybe in the future:
+#is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡ'),                0,  'matching (utf8)';
+#is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓡ'),                  1,  'insertion (utf8)';
+#is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡⓣⓗ'),             2,  'deletion (utf8)';
+#is edit-distance('ⓕⓞⓤⓡ','ⓕⓤⓞⓡ'),                1,  'transposition (utf8)';
+#is edit-distance('ⓕⓞⓤⓡ','ⓕⓧⓧⓡ'),                2,  'substitution (utf8)';
+
+# test larger strings
+is edit-distance('four' x 20, 'fuor' x 20),         20,  'lengths of 100';
