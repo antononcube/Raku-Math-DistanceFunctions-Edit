@@ -20,10 +20,11 @@ is edit-distance('','four'),                         4,  'source empty';
 is edit-distance('',''),                             0,  'source & target empty';
 is edit-distance('11','1'),                          1,  'numbers';
 is edit-distance('xxx','x'),                         2,  'xxx vs x';
-
-# some extra maxDistance tests
 is edit-distance("xxx","xxxx"),                      1,  'xxx vs xxxx';
 is edit-distance("a","xxxxxxxx"),                    8,  'misc 9 (length shortcut)';
+
+# test larger strings
+is edit-distance('four' x 20, 'fuor' x 20),         20,  'lengths of 100';
 
 # Test some utf8
 # Maybe in the future:
@@ -32,6 +33,3 @@ is edit-distance("a","xxxxxxxx"),                    8,  'misc 9 (length shortcu
 #is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡⓣⓗ'),             2,  'deletion (utf8)';
 #is edit-distance('ⓕⓞⓤⓡ','ⓕⓤⓞⓡ'),                1,  'transposition (utf8)';
 #is edit-distance('ⓕⓞⓤⓡ','ⓕⓧⓧⓡ'),                2,  'substitution (utf8)';
-
-# test larger strings
-is edit-distance('four' x 20, 'fuor' x 20),         20,  'lengths of 100';
