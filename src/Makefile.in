@@ -1,0 +1,8 @@
+name = %EditDistance%
+
+all: %DESTDIR%/resources/libraries/%EditDistance%
+clean:
+	rm %DESTDIR%/resources/libraries/%EditDistance%
+
+%DESTDIR%/resources/libraries/%EditDistance%: EditDistance.c
+	%CC% -shared %CCSHARED% %CCFLAGS% EditDistance.c -o %DESTDIR%/resources/libraries/%EditDistance%

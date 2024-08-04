@@ -1,0 +1,26 @@
+{
+  "name": "Math::DistanceFunctions::Edit",
+  "description": "Raku package of fast Damerau-Levenshtein distance functions based on C code via NativeCall.",
+  "version": "0.1.0",
+  "perl": "6.d",
+  "authors": [
+    "Anton Antonov"
+  ],
+  "auth": "zef:antononcube",
+  "depends": [],
+  "builder": "Math::DistanceFunctions::Edit::CustomBuilder",
+  "build-depends": [
+    "LibraryMake",
+    "Distribution::Builder::MakeFromJSON",
+    "Math::DistanceFunctions::Edit::CustomBuilder"
+  ],
+  "test-depends": [],
+  "provides": {
+    "Math::DistanceFunctions::Edit": "lib/Math/DistanceFunctions/Edit.rakumod",
+    "Math::DistanceFunctions::Edit::CustomBuilder": "lib/Math/DistanceFunctions/Edit/CustomBuilder.rakumod"
+  },
+  "resources": ["libraries/EditDistance"],
+  "license": "Artistic-2.0",
+  "api": "1",
+  "source-url": "https://github.com/antononcube/Raku-Math-DistanceFunctions-Edit.git"
+}
