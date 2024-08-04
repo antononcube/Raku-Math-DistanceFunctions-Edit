@@ -14,9 +14,10 @@ int min3(int a, int b, int c) {
     return min(a, min(b, c));
 }
 
-int EditDistance(const char *s1, const char *s2) {
-    int len1 = strlen(s1);
-    int len2 = strlen(s2);
+//int EditDistance(const char *s1, const char *s2) {
+//    int len1 = strlen(s1);
+//    int len2 = strlen(s2);
+int EditDistance(const int *s1, const int len1, const int *s2, const int len2) {
     int **d = (int **)malloc((len1 + 1) * sizeof(int *));
     for (int i = 0; i <= len1; i++) {
         d[i] = (int *)malloc((len2 + 1) * sizeof(int));

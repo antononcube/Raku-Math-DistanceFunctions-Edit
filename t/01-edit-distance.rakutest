@@ -28,8 +28,8 @@ is edit-distance('four' x 20, 'fuor' x 20),         20,  'lengths of 100';
 
 # Test some utf8
 # Maybe in the future:
-#is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡ'),                0,  'matching (utf8)';
-#is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓡ'),                  1,  'insertion (utf8)';
-#is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡⓣⓗ'),             2,  'deletion (utf8)';
-#is edit-distance('ⓕⓞⓤⓡ','ⓕⓤⓞⓡ'),                1,  'transposition (utf8)';
-#is edit-distance('ⓕⓞⓤⓡ','ⓕⓧⓧⓡ'),                2,  'substitution (utf8)';
+is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡ'),                0,  'matching (utf8)';
+is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓡ'),                  1,  'insertion (utf8)';
+is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡⓣⓗ'),             2,  'deletion (utf8)';
+is edit-distance('ⓕⓞⓤⓡ','ⓕⓤⓞⓡ'),                1,  'transposition (utf8)';
+is edit-distance('ⓕⓞⓤⓡ','ⓕⓧⓧⓡ'),                2,  'substitution (utf8)';
