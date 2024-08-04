@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
-void say_hello() {
-    printf("Hello from C!\n");
-}
+//void say_hello() {
+//    printf("Hello from C!\n");
+//}
 
 int min(int a, int b) {
     return (a < b) ? a : b;
@@ -13,7 +13,6 @@ int min(int a, int b) {
 int min3(int a, int b, int c) {
     return min(a, min(b, c));
 }
-
 
 void copyStringToIntArray(const char *str, int *intArray) {
     while (*str) {
