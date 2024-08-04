@@ -14,10 +14,15 @@ int min3(int a, int b, int c) {
     return min(a, min(b, c));
 }
 
-//int EditDistance(const char *s1, const char *s2) {
-//    int len1 = strlen(s1);
-//    int len2 = strlen(s2);
-int EditDistance(const int *s1, const int len1, const int *s2, const int len2) {
+
+void copyStringToIntArray(const char *str, int *intArray) {
+    while (*str) {
+        *intArray++ = (int)*str++;
+    }
+    *intArray = 0; // Null-terminate the integer array
+}
+
+int EditDistanceArray(const int *s1, const int len1, const int *s2, const int len2) {
     int **d = (int **)malloc((len1 + 1) * sizeof(int *));
     for (int i = 0; i <= len1; i++) {
         d[i] = (int *)malloc((len2 + 1) * sizeof(int));
@@ -53,4 +58,21 @@ int EditDistance(const int *s1, const int len1, const int *s2, const int len2) {
     free(d);
 
     return result;
+}
+
+int EditDistance(const char *s1, const char *s2) {
+    int len1 = strlen(s1);
+    int len2 = strlen(s2);
+    int *intArray1 = (int *)malloc((len1 + 1) * sizeof(int));
+    int *intArray2 = (int *)malloc((len2 + 1) * sizeof(int));
+
+    copyStringToIntArray(s1, intArray1);
+    copyStringToIntArray(s2, intArray2);
+
+    int distance = EditDistanceArray(intArray1, len1, intArray2, len2);
+
+    free(intArray1);
+    free(intArray2);
+
+    return distance;
 }
