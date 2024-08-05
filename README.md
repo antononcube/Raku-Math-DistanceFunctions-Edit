@@ -94,6 +94,31 @@ LLM generations with simple prompts were used.
 
 -----
 
+## Profiling and performance
+
+Since the speed is the most important reason for this package, after its complete initial version,
+profiling was done each refactoring step. See the file ["faster-word-distances.raku"](./examples/faster-word-distances.raku).
+
+- For ASCII (non-UTF-8) strings `edit-distance` is ≈70 times faster than `dld`.
+- For UTF-8 strings ≈5 times faster.
+
+Here is en example output of the normalized profiling times done with the script "faster-word-distances.raku":
+
+```
+StrDistance => 1
+dld => 0.847204294559419
+edit-distance => 0.011560672845434399
+rosetta => 2.5342606961356466
+sift => 0.021171925438510746
+```
+
+**Remark:** The timing of Raku's built-in [`StrDistance`](https://docs.raku.org/type/StrDistance) is used to normalize the rest of the timings.  
+
+**Remark:** In the profiling also `sift4` from ["Text::Diff::Sift4"](https://raku.land/github:MasterDuke17/Text::Diff::Sift4), [MDp1], was used. 
+(NQP-based implementation.)
+
+-----
+
 ## References
 
 [AAp1] Anton Antonov,
@@ -105,6 +130,11 @@ LLM generations with simple prompts were used.
 [Algorithm::KdTree Raku package](https://github.com/titsuki/p6-Algorithm-KdTree),
 (2016-2024),
 [GitHub/titsuki](https://github.com/titsuki).
+
+[MDp1] MaterDuke17,
+[Text::Diff::Sift4 Raku package](https://github.com/MasterDuke17/Text-Diff-Sift4),
+(2016-2021),
+[GitHub/MaterDuke17](https://github.com/MasterDuke17).
 
 [NLp1] Nick Logan,
 [Text::Levenshtein::Damerau Raku package](https://github.com/ugexe/Raku-Text--Levenshtein--Damerau),
