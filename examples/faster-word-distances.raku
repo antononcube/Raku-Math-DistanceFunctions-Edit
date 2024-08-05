@@ -44,14 +44,14 @@ my @testPairs =[ <kitten sitting>, <saturday sunday>, <rosettacode raisethysword
                  <string1 string2>, <classify clasify>, <correlation corellation>,
                  <recommend recomende>, <non-negative nonenegative>, <hour our>];
 
-my UInt $n = 1_000;
+my UInt $n = 10_000;
 my @res;
 for @testPairs -> ($s, $t) {
     for [('dld', &dld),
          ('rosetta', &levenshtein-distance),
          ('sift', &sift4),
          ('StrDistance', &StrDistanceFunc),
-         ('EditDistance', &edit-distance)] -> ($distName, &distFinder) {
+         ('edit-distance', &edit-distance)] -> ($distName, &distFinder) {
         my $tstart = now;
         my $d = &distFinder($s, $t);
         for ^$n {
