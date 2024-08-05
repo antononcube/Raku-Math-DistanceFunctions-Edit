@@ -48,6 +48,9 @@ edit-distance([True, False, False, True], [True, False, False]);
 # 1
 ```
 
+**Remark:** Currently, elements of integer lists are converted to `int32`.
+If larger integers are used then convert to `Str` first.
+
 -----
 
 ## Motivation

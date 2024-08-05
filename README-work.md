@@ -38,6 +38,9 @@ edit-distance(<bark alma area arc>, <Arc alma area>):ignore-case;
 edit-distance([True, False, False, True], [True, False, False]);
 ```
 
+**Remark:** Currently, elements of integer lists are converted to `int32`. 
+If larger integers are used then convert to `Str` first.
+
 -----
 
 ## Motivation
