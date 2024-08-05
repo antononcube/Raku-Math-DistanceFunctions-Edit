@@ -2,10 +2,27 @@
 #include <stdlib.h>
 #include <string.h>
 
-//void say_hello() {
-//    printf("Hello from C!\n");
+//---------------------------------------------------------------------
+int is_utf8(const char *string) {
+    while (*string) {
+        if ((unsigned char)*string >= 0x80) {
+            return 1;
+        }
+        string++;
+    }
+    return 0;
+}
+
+//int is_utf8(const char *string) {
+//    for (size_t i = 0; i < length; ++i) {
+//        if ((unsigned char)string[i] >= 0x80) {
+//            return 1;
+//        }
+//    }
+//    return 0;
 //}
 
+//---------------------------------------------------------------------
 int min(int a, int b) {
     return (a < b) ? a : b;
 }
@@ -14,6 +31,7 @@ int min3(int a, int b, int c) {
     return min(a, min(b, c));
 }
 
+//---------------------------------------------------------------------
 void copyStringToIntArray(const char *str, int *intArray) {
     while (*str) {
         *intArray++ = (int)*str++;
@@ -21,6 +39,7 @@ void copyStringToIntArray(const char *str, int *intArray) {
     *intArray = 0; // Null-terminate the integer array
 }
 
+//---------------------------------------------------------------------
 int EditDistanceArray(const int *s1, const int len1, const int *s2, const int len2) {
     int **d = (int **)malloc((len1 + 1) * sizeof(int *));
     for (int i = 0; i <= len1; i++) {
@@ -59,6 +78,7 @@ int EditDistanceArray(const int *s1, const int len1, const int *s2, const int le
     return result;
 }
 
+//---------------------------------------------------------------------
 int EditDistance(const char *s1, const char *s2) {
     int len1 = strlen(s1);
     int len2 = strlen(s2);

@@ -7,3 +7,5 @@
 /resources/libraries/*.so
 /resources/libraries/*.dylib
 .precomp/
+.DS_Store
+.idea
