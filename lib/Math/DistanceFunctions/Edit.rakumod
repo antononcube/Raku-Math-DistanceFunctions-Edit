@@ -33,9 +33,9 @@ our proto sub edit-distance($s1, $s2, Bool:D :i(:$ignore-case) = False --> Int:D
 
 multi sub edit-distance(Str:D $s1, Str:D $s2, Bool:D :i(:$ignore-case) = False --> Int:D) {
     return do if $ignore-case {
-        edit-distance-fast($s1, $s2)
-    } else {
         edit-distance-fast($s1.lc, $s2.lc)
+    } else {
+        edit-distance-fast($s1, $s2)
     }
 }
 
