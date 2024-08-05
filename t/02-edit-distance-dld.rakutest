@@ -33,3 +33,5 @@ is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓡ'),                  1,  'insertion (u
 is edit-distance('ⓕⓞⓤⓡ','ⓕⓞⓤⓡⓣⓗ'),             2,  'deletion (utf8)';
 is edit-distance('ⓕⓞⓤⓡ','ⓕⓤⓞⓡ'),                1,  'transposition (utf8)';
 is edit-distance('ⓕⓞⓤⓡ','ⓕⓧⓧⓡ'),                2,  'substitution (utf8)';
+
+done-testing;
