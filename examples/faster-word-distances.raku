@@ -44,7 +44,7 @@ my @testPairs =[ <kitten sitting>, <saturday sunday>, <rosettacode raisethysword
                  <string1 string2>, <classify clasify>, <correlation corellation>,
                  <recommend recomende>, <non-negative nonenegative>, <hour our>];
 
-my UInt $n = 1000;
+my UInt $n = 1_000;
 my @res;
 for @testPairs -> ($s, $t) {
     for [('dld', &dld),
@@ -74,4 +74,9 @@ say Data::TypeSystem::deduce-type(%res2);
 
 say '=' x 120;
 
-.say for %res2.map({ $_.key => $_.value.map(*<time>).sum });
+my %res3 = %res2.map({ $_.key => $_.value.map(*<time>).sum });
+.say for %res3;
+
+say '-' x 120;
+
+.say for %res3.deepmap({ $_ / %res3<StrDistance> });
