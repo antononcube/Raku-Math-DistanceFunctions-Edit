@@ -1,5 +1,7 @@
 use v6.d;
 
+unit module Math::DistanceFunctions::Edit;
+
 use NativeCall;
 use NativeHelpers::Array;
 
@@ -12,14 +14,13 @@ sub EditDistance(Str, Str --> int32) is native($library) {*}
 
 sub EditDistanceArray(CArray[int32], int32, CArray[int32], int32 --> int32) is native($library) {*}
 
-unit module Math::DistanceFunctions::Edit;
-
 # Using this definition slows down the computations ≈3 times.
 #sub has-utf8(Str $str --> Bool) { so $str ~~ /<-[\x00..\x7F]>/; }
 
 # Using this definition slows down the computations ≈3 times.
 #sub has-utf8(Str:D $s) { $s.chars != $s.encode.bytes }
 
+#-----------------------------------------------------------
 our sub edit-distance-fast(Str:D $s1, Str:D $s2 --> Int:D) is export {
     if is_utf8($s1) || is_utf8($s2) {
         my $carray1 = copy-to-carray($s1.comb».ord, int32);
@@ -29,6 +30,7 @@ our sub edit-distance-fast(Str:D $s1, Str:D $s2 --> Int:D) is export {
     return EditDistance($s1, $s2);
 }
 
+#-----------------------------------------------------------
 our proto sub edit-distance($s1, $s2, Bool:D :i(:$ignore-case) = False --> Int:D) is export {*}
 
 multi sub edit-distance(Str:D $s1, Str:D $s2, Bool:D :i(:$ignore-case) = False --> Int:D) {
