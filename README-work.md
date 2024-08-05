@@ -59,7 +59,7 @@ The slowdown effect of the "expensive" to compute results by `dld` can be addres
 - Certain clever checks can be made before invoking `dld`.
 - Create a new function called `edit-distance` in C and set up a "NativeCall" connection to it.
 
-So, at this point, both approaches were taken: the first in "DSL::Translators", the second by "Math::DistanceFunctions::Edit".
+So, at this point, both approaches were taken: the first in "DSL::Shared", [AAp2], the second by "Math::DistanceFunctions::Edit".
 
 -----
 
@@ -108,7 +108,12 @@ sift => 0.021171925438510746
 [AAp1] Anton Antonov,
 [DSL::Translators Raku package](https://github.com/antononcube/Raku-DSL-Translators),
 (2020-2024),
-[GitHub/antononcube](https://github.com/antononcube/)
+[GitHub/antononcube](https://github.com/antononcube/).
+
+[AAp2] Anton Antonov,
+[DSL::Shared Raku package](https://github.com/antononcube/Raku-Shared),
+(2020-2024),
+[GitHub/antononcube](https://github.com/antononcube/).
 
 [ITp1] Itsuki Toyota,
 [Algorithm::KdTree Raku package](https://github.com/titsuki/p6-Algorithm-KdTree),
