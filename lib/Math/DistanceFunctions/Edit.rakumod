@@ -5,7 +5,7 @@ unit module Math::DistanceFunctions::Edit;
 use NativeCall;
 use NativeHelpers::Array;
 
-my constant $library = %?RESOURCES<libraries/EditDistance>.IO.Str;
+my constant $library = %?RESOURCES<libraries/EditDistance>;
 
 # This is three ≈3 times faster than the has-utf8 subs defined below.
 sub is_utf8(Str --> int32) is native($library) {*}
