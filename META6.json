@@ -17,6 +17,7 @@
   ],
   "test-depends": [],
   "provides": {
+    "Math::DistanceFunctions::Edit": "lib/Math/DistanceFunctions/Edit.rakumod",
     "Math::DistanceFunctions::Edit::CustomBuilder": "lib/Math/DistanceFunctions/Edit/CustomBuilder.rakumod"
   },
   "resources": [
