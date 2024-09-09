@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 //---------------------------------------------------------------------
 int is_utf8(const char *string) {
@@ -94,4 +95,28 @@ int EditDistance(const char *s1, const char *s2) {
     free(intArray2);
 
     return distance;
+}
+
+//---------------------------------------------------------------------
+double CosineDistanceArray(double *a, double *b, int n) {
+    double dot_product = 0.0, norm_a = 0.0, norm_b = 0.0;
+    for (int i = 0; i < n; i++) {
+        dot_product += a[i] * b[i];
+        norm_a += a[i] * a[i];
+        norm_b += b[i] * b[i];
+    }
+    if (norm_a == 0.0 || norm_b == 0.0) {
+        return 1.0;
+    }
+    return 1.0 - (dot_product / (sqrt(norm_a) * sqrt(norm_b)));
+}
+
+//---------------------------------------------------------------------
+double EuclideanDistanceArray(double *a, double *b, int n) {
+    double sum = 0.0;
+    for (int i = 0; i < n; i++) {
+        double diff = a[i] - b[i];
+        sum += diff * diff;
+    }
+    return sqrt(sum);
 }

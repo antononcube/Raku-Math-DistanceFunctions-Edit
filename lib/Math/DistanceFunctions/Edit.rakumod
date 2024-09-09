@@ -14,6 +14,10 @@ sub EditDistance(Str, Str --> int32) is native($library) {*}
 
 sub EditDistanceArray(CArray[int32], int32, CArray[int32], int32 --> int32) is native($library) {*}
 
+sub CosineDistanceArray(CArray[num64], CArray[num64], int32 --> num64) is native($library) {*}
+
+sub EuclideanDistanceArray(CArray[num64], CArray[num64], int32 --> num64) is native($library) {*}
+
 # Using this definition slows down the computations ≈3 times.
 #sub has-utf8(Str $str --> Bool) { so $str ~~ /<-[\x00..\x7F]>/; }
 
@@ -56,4 +60,21 @@ multi sub edit-distance(@s1, @s2, Bool:D :i(:$ignore-case) = False --> Int:D) {
     } else {
         return edit-distance(@s1».raku, @s2».raku, :$ignore-case);
     }
+}
+
+#-----------------------------------------------------------
+our sub cosine-distance(@v1, @v2 --> Numeric:D) is export {
+    if !(@v1.elems == @v2.elems && (@v1.all ~~ Numeric:D) && (@v2.all ~~ Numeric:D) ) {
+        die "The arguments are expected to be both numeric arrays of the same length.";
+    }
+    #return CosineDistanceArray(copy-to-carray(@v1, num), copy-to-carray(@v2, num), @v1.elems);
+    return CosineDistanceArray(copy-to-carray(@v1, num64), copy-to-carray(@v2, num64), @v1.elems);
+}
+
+#-----------------------------------------------------------
+our sub euclidean-distance(@v1, @v2 --> Numeric:D) is export {
+    if !(@v1.elems == @v2.elems && (@v1.all ~~ Numeric:D) && (@v2.all ~~ Numeric:D) ) {
+        die "The arguments are expected to be both numeric arrays of the same length.";
+    }
+    return EuclideanDistanceArray(copy-to-carray(@v1, num64), copy-to-carray(@v2, num64), @v1.elems);
 }
