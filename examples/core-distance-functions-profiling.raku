@@ -28,6 +28,12 @@ for ^$iterations {
 my $large-cosine-time = now - $start;
 
 $start = now;
+(^$iterations).hyper(batch => ceiling($iterations / 4), degree => 4).map({
+    cosine-distance(@large-vec1, @large-vec2);
+});
+my $hyper-large-cosine-time = now - $start;
+
+$start = now;
 for ^$iterations {
     euclidean-distance(@small-vec1, @small-vec2);
 }
@@ -39,11 +45,13 @@ for ^$iterations {
 }
 my $large-euclidean-time = now - $start;
 
-say "Total Small Cosine Distance Time      : {$small-cosine-time}s";
-say "Average Small Cosine Distance Time    : {$small-cosine-time / $iterations}s";
-say "Total Large Cosine Distance Time      : {$large-cosine-time}s";
-say "Average Large Cosine Distance Time    : {$large-cosine-time / $iterations}s";
-say "Total Small Euclidean Distance Time   : {$small-euclidean-time}s";
-say "Average Small Euclidean Distance Time : {$small-euclidean-time / $iterations}s";
-say "Total Large Euclidean Distance Time   : {$large-euclidean-time}s";
-say "Average Large Euclidean Distance Time : {$large-euclidean-time / $iterations}s";
+say "Total Small Cosine Distance Time            : {$small-cosine-time}s";
+say "Average Small Cosine Distance Time          : {$small-cosine-time / $iterations}s";
+say "Total Large Cosine Distance Time            : {$large-cosine-time}s";
+say "Average Large Cosine Distance Time          : {$large-cosine-time / $iterations}s";
+say "Total Small Euclidean Distance Time         : {$small-euclidean-time}s";
+say "Average Small Euclidean Distance Time       : {$small-euclidean-time / $iterations}s";
+say "Total Large Euclidean Distance Time         : {$large-euclidean-time}s";
+say "Average Large Euclidean Distance Time       : {$large-euclidean-time / $iterations}s";
+say "Total Hyper Large Cosine Distance Time      : {$hyper-large-cosine-time}s";
+say "Average Hyper Large Cosine Distance Time    : {$hyper-large-cosine-time / $iterations}s";
