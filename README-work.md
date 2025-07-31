@@ -84,12 +84,12 @@ LLM generations with simple prompts were used.
 ## Profiling and performance
 
 Since the speed is the most important reason for this package, after its complete initial version,
-profiling was done each refactoring step. See the file ["faster-word-distances.raku"](./examples/faster-word-distances.raku).
+profiling was done after each refactoring step. See the file ["faster-word-distances.raku"](./examples/faster-word-distances.raku).
 
 - For ASCII (non-UTF-8) strings `edit-distance` is ≈70 times faster than `dld`.
 - For UTF-8 strings ≈5 times faster.
 
-Here is en example output of the normalized profiling times done with the script "faster-word-distances.raku":
+Here is an example output of the normalized profiling times done with the script "faster-word-distances.raku":
 
 ```
 StrDistance => 1
